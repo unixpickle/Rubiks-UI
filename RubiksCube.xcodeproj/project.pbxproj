@@ -1,0 +1,322 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA6759B6170CE81500314726 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6759B5170CE81500314726 /* UIKit.framework */; };
+		FA6759B8170CE81600314726 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6759B7170CE81500314726 /* Foundation.framework */; };
+		FA6759BA170CE81600314726 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6759B9170CE81600314726 /* CoreGraphics.framework */; };
+		FA6759BC170CE81600314726 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6759BB170CE81600314726 /* GLKit.framework */; };
+		FA6759BE170CE81600314726 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6759BD170CE81600314726 /* OpenGLES.framework */; };
+		FA6759C4170CE81600314726 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA6759C2170CE81600314726 /* InfoPlist.strings */; };
+		FA6759C6170CE81600314726 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6759C5170CE81600314726 /* main.m */; };
+		FA6759CA170CE81600314726 /* ANAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6759C9170CE81600314726 /* ANAppDelegate.m */; };
+		FA6759CC170CE81600314726 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6759CB170CE81600314726 /* Default.png */; };
+		FA6759CE170CE81600314726 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6759CD170CE81600314726 /* Default@2x.png */; };
+		FA6759D0170CE81600314726 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6759CF170CE81600314726 /* Default-568h@2x.png */; };
+		FA6759D2170CE81600314726 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FA6759D1170CE81600314726 /* Shader.fsh */; };
+		FA6759D4170CE81600314726 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = FA6759D3170CE81600314726 /* Shader.vsh */; };
+		FA6759D7170CE81600314726 /* ANViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6759D6170CE81600314726 /* ANViewController.m */; };
+		FA6759DA170CE81600314726 /* ANViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA6759D8170CE81600314726 /* ANViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FA6759B2170CE81500314726 /* RubiksCube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RubiksCube.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA6759B5170CE81500314726 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FA6759B7170CE81500314726 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FA6759B9170CE81600314726 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FA6759BB170CE81600314726 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		FA6759BD170CE81600314726 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		FA6759C1170CE81600314726 /* RubiksCube-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RubiksCube-Info.plist"; sourceTree = "<group>"; };
+		FA6759C3170CE81600314726 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FA6759C5170CE81600314726 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FA6759C7170CE81600314726 /* RubiksCube-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RubiksCube-Prefix.pch"; sourceTree = "<group>"; };
+		FA6759C8170CE81600314726 /* ANAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANAppDelegate.h; sourceTree = "<group>"; };
+		FA6759C9170CE81600314726 /* ANAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANAppDelegate.m; sourceTree = "<group>"; };
+		FA6759CB170CE81600314726 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		FA6759CD170CE81600314726 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		FA6759CF170CE81600314726 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		FA6759D1170CE81600314726 /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
+		FA6759D3170CE81600314726 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
+		FA6759D5170CE81600314726 /* ANViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANViewController.h; sourceTree = "<group>"; };
+		FA6759D6170CE81600314726 /* ANViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANViewController.m; sourceTree = "<group>"; };
+		FA6759D9170CE81600314726 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ANViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA6759AF170CE81500314726 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA6759B6170CE81500314726 /* UIKit.framework in Frameworks */,
+				FA6759B8170CE81600314726 /* Foundation.framework in Frameworks */,
+				FA6759BA170CE81600314726 /* CoreGraphics.framework in Frameworks */,
+				FA6759BC170CE81600314726 /* GLKit.framework in Frameworks */,
+				FA6759BE170CE81600314726 /* OpenGLES.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA6759A9170CE81500314726 = {
+			isa = PBXGroup;
+			children = (
+				FA6759BF170CE81600314726 /* RubiksCube */,
+				FA6759B4170CE81500314726 /* Frameworks */,
+				FA6759B3170CE81500314726 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA6759B3170CE81500314726 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA6759B2170CE81500314726 /* RubiksCube.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA6759B4170CE81500314726 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA6759B5170CE81500314726 /* UIKit.framework */,
+				FA6759B7170CE81500314726 /* Foundation.framework */,
+				FA6759B9170CE81600314726 /* CoreGraphics.framework */,
+				FA6759BB170CE81600314726 /* GLKit.framework */,
+				FA6759BD170CE81600314726 /* OpenGLES.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA6759BF170CE81600314726 /* RubiksCube */ = {
+			isa = PBXGroup;
+			children = (
+				FA6759C8170CE81600314726 /* ANAppDelegate.h */,
+				FA6759C9170CE81600314726 /* ANAppDelegate.m */,
+				FA6759D1170CE81600314726 /* Shader.fsh */,
+				FA6759D3170CE81600314726 /* Shader.vsh */,
+				FA6759D5170CE81600314726 /* ANViewController.h */,
+				FA6759D6170CE81600314726 /* ANViewController.m */,
+				FA6759D8170CE81600314726 /* ANViewController.xib */,
+				FA6759C0170CE81600314726 /* Supporting Files */,
+			);
+			path = RubiksCube;
+			sourceTree = "<group>";
+		};
+		FA6759C0170CE81600314726 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA6759C1170CE81600314726 /* RubiksCube-Info.plist */,
+				FA6759C2170CE81600314726 /* InfoPlist.strings */,
+				FA6759C5170CE81600314726 /* main.m */,
+				FA6759C7170CE81600314726 /* RubiksCube-Prefix.pch */,
+				FA6759CB170CE81600314726 /* Default.png */,
+				FA6759CD170CE81600314726 /* Default@2x.png */,
+				FA6759CF170CE81600314726 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA6759B1170CE81500314726 /* RubiksCube */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA6759DD170CE81600314726 /* Build configuration list for PBXNativeTarget "RubiksCube" */;
+			buildPhases = (
+				FA6759AE170CE81500314726 /* Sources */,
+				FA6759AF170CE81500314726 /* Frameworks */,
+				FA6759B0170CE81500314726 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RubiksCube;
+			productName = RubiksCube;
+			productReference = FA6759B2170CE81500314726 /* RubiksCube.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA6759AA170CE81500314726 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AN;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Alex Nichol";
+			};
+			buildConfigurationList = FA6759AD170CE81500314726 /* Build configuration list for PBXProject "RubiksCube" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FA6759A9170CE81500314726;
+			productRefGroup = FA6759B3170CE81500314726 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA6759B1170CE81500314726 /* RubiksCube */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA6759B0170CE81500314726 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA6759C4170CE81600314726 /* InfoPlist.strings in Resources */,
+				FA6759CC170CE81600314726 /* Default.png in Resources */,
+				FA6759CE170CE81600314726 /* Default@2x.png in Resources */,
+				FA6759D0170CE81600314726 /* Default-568h@2x.png in Resources */,
+				FA6759D2170CE81600314726 /* Shader.fsh in Resources */,
+				FA6759D4170CE81600314726 /* Shader.vsh in Resources */,
+				FA6759DA170CE81600314726 /* ANViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA6759AE170CE81500314726 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA6759C6170CE81600314726 /* main.m in Sources */,
+				FA6759CA170CE81600314726 /* ANAppDelegate.m in Sources */,
+				FA6759D7170CE81600314726 /* ANViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FA6759C2170CE81600314726 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA6759C3170CE81600314726 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FA6759D8170CE81600314726 /* ANViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA6759D9170CE81600314726 /* en */,
+			);
+			name = ANViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA6759DB170CE81600314726 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FA6759DC170CE81600314726 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA6759DE170CE81600314726 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RubiksCube/RubiksCube-Prefix.pch";
+				INFOPLIST_FILE = "RubiksCube/RubiksCube-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FA6759DF170CE81600314726 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RubiksCube/RubiksCube-Prefix.pch";
+				INFOPLIST_FILE = "RubiksCube/RubiksCube-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA6759AD170CE81500314726 /* Build configuration list for PBXProject "RubiksCube" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA6759DB170CE81600314726 /* Debug */,
+				FA6759DC170CE81600314726 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA6759DD170CE81600314726 /* Build configuration list for PBXNativeTarget "RubiksCube" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA6759DE170CE81600314726 /* Debug */,
+				FA6759DF170CE81600314726 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA6759AA170CE81500314726 /* Project object */;
+}
