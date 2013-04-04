@@ -69,7 +69,7 @@
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, vertexData);
     glEnableVertexAttribArray(GLKVertexAttribColor);
     glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, colorData);
-    glDrawArrays(GL_TRIANGLES, 0, 18 * 8);
+    glDrawArrays(GL_TRIANGLES, 0, kCubeCornerVertexCount * 8);
 }
 
 - (void)updateWithAnimation:(ANCubeAnimation *)animation {
@@ -131,6 +131,13 @@
             for (int i = 0; i < 6; i++) {
                 [self copyColor:colors[colorIndex] toBuffer:&pieceColors[i * 4 + colorIndex * 6 * 4]];
             }
+        }
+        // the rest of the piece is all black
+        for (int index = 18; index < kCubeCornerVertexCount; index++) {
+            colorData[i * (kCubeCornerVertexCount * 4) + index * 4] = 0;
+            colorData[i * (kCubeCornerVertexCount * 4) + index * 4 + 1] = 0;
+            colorData[i * (kCubeCornerVertexCount * 4) + index * 4 + 2] = 0;
+            colorData[i * (kCubeCornerVertexCount * 4) + index * 4 + 3] = 1;
         }
     }
 }
