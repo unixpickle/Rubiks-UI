@@ -19,6 +19,9 @@
 
 - (void)viewDidLoad
 {
+    GLKView * glkView = (GLKView *)self.view;
+    glkView.drawableMultisample = GLKViewDrawableMultisample4X;
+    
     cube = [[ANPocketCube alloc] initIdentity];
     [super viewDidLoad];
     
@@ -98,11 +101,18 @@
     glClearColor(0.5, 0.5, 0.5, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
+    static double angle = 0;
+    angle += M_PI / 32;
+    
+    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0, 0, -5.0f);
+    modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, angle / 4, 1, 1, 0);
+    self.effect.transform.modelviewMatrix = modelViewMatrix;
+    
     // Render the object with GLKit
     [self.effect prepareToDraw];
     
-    ANCubeAnimation * anim = [[ANCubeAnimation alloc] initWithFace:ANCubeAnimationFaceTop];
-    anim.angle = M_PI / 8;
+    ANCubeAnimation * anim = [[ANCubeAnimation alloc] initWithFace:ANCubeAnimationFaceLeft];
+    anim.angle = angle;
     [cube updateWithAnimation:anim];
     [cube drawCube];
 }

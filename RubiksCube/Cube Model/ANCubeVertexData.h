@@ -9,8 +9,8 @@
 #ifndef RubiksCube_ANCubeVertexData_h
 #define RubiksCube_ANCubeVertexData_h
 
-#define kCubeCornerVertexCount 72
-#define kCubeSpace 0.01
+#define kCubeCornerVertexCount (36)
+#define kCubeSpace 0.02
 
 const GLfloat PositiveCorner[] = {
     // x pane
@@ -34,69 +34,27 @@ const GLfloat PositiveCorner[] = {
     1, 1, 1,
     1, kCubeSpace, 1,
     kCubeSpace, kCubeSpace, 1,
-    // small top black spacing 1
-    0, 1, 0,
-    kCubeSpace, 1, 0,
-    kCubeSpace, 1, 1,
-    kCubeSpace, 1, 1,
-    0, 1, 1,
-    0, 1, 0,
-    // horizontal spacing (small top 2)
-    kCubeSpace, 1, 0,
+    // actual black bottom inner face
+    kCubeSpace, kCubeSpace, kCubeSpace,
+    1, kCubeSpace, kCubeSpace,
+    1, kCubeSpace, 1,
+    1, kCubeSpace, 1,
+    kCubeSpace, kCubeSpace, 1,
+    kCubeSpace, kCubeSpace, kCubeSpace,
+    // black back inner face
+    kCubeSpace, kCubeSpace, kCubeSpace,
     kCubeSpace, 1, kCubeSpace,
     1, 1, kCubeSpace,
     1, 1, kCubeSpace,
-    1, 1, 0,
-    kCubeSpace, 1, 0,
-    // vertical spacing 1
-    0, 0, 1,
-    kCubeSpace, 0, 1,
-    kCubeSpace, 1, 1,
-    kCubeSpace, 1, 1,
-    0, 1, 1,
-    0, 0, 1,
-    // vertical spacing 2
-    1, 0, 0,
-    1, 0, kCubeSpace,
-    1, 1, kCubeSpace,
-    1, 1, kCubeSpace,
-    1, 1, 0,
-    1, 0, 0,
-    // bottom horizontal
-    0, 0, 1,
-    0, kCubeSpace, 1,
-    1, kCubeSpace, 1,
-    1, kCubeSpace, 1,
-    1, 0, 1,
-    0, 0, 1,
-    // bottom side
-    1, 0, 0,
-    1, kCubeSpace, 0,
-    1, kCubeSpace, 1,
-    1, kCubeSpace, 1,
-    1, 0, 1,
-    1, 0, 0,
-    // actual black bottom inner face
-    0, 0, 0,
-    1, 0, 0,
-    1, 0, 1,
-    1, 0, 1,
-    0, 0, 1,
-    0, 0, 0,
-    // black back inner face
-    0, 0, 0,
-    0, 1, 0,
-    1, 1, 0,
-    1, 1, 0,
-    1, 0, 0,
-    0, 0, 0,
+    1, kCubeSpace, kCubeSpace,
+    kCubeSpace, kCubeSpace, kCubeSpace,
     // black left inner face
-    0, 0, 0,
-    0, 0, 1,
-    0, 1, 1,
-    0, 1, 1,
-    0, 1, 0,
-    0, 0, 0
+    kCubeSpace, kCubeSpace, kCubeSpace,
+    kCubeSpace, kCubeSpace, 1,
+    kCubeSpace, 1, 1,
+    kCubeSpace, 1, 1,
+    kCubeSpace, 1, kCubeSpace,
+    kCubeSpace, kCubeSpace, kCubeSpace
 };
 
 #endif

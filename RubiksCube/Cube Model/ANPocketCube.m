@@ -83,7 +83,7 @@
         if (![self isCornerPiece:i onFace:animation.face] || !animation) {
             continue;
         }
-        for (int j = 0; j < 18; j++) {
+        for (int j = 0; j < kCubeCornerVertexCount; j++) {
             GLKVector3 point = GLKVector3Make(vertexData[cornerSize * i + j * 3],
                                               vertexData[cornerSize * i + j * 3 + 1],
                                               vertexData[cornerSize * i + j * 3 + 2]);
@@ -180,7 +180,7 @@
         {0, 0, 1}, // blue
         {0, 1, 0}, // green
         {1, 0, 0}, // red
-        {0.59, 0.59, 0.2} // orange
+        {1, 0.5, 0.2} // orange
     };
     memcpy((void *)buffer, &colors[color - 1], sizeof(GLfloat) * 3);
     buffer[4] = 1;
