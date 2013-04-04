@@ -109,7 +109,7 @@
         // perform rotations
         for (int i = 0; i < 8; i++) {
             if (![self isCornerPiece:i onFace:animation.face]) continue;
-            for (int j = 0; j < 18; j++) {
+            for (int j = 0; j < kCubeCornerVertexCount; j++) {
                 GLKVector3 point = GLKVector3Make(corners[cornerSize * i + j * 3],
                                                   corners[cornerSize * i + j * 3 + 1],
                                                   corners[cornerSize * i + j * 3 + 2]);
@@ -122,10 +122,10 @@
     }
     
     // create the color data
-    colorData = (GLfloat *)malloc(sizeof(GLfloat) * 18 * 4 * 8);
+    colorData = (GLfloat *)malloc(sizeof(GLfloat) * kCubeCornerVertexCount * 4 * 8);
     for (int i = 0; i < 8; i++) {
         ANCubePiece * piece = [[self cornerPieces] objectAtIndex:i];
-        GLfloat * pieceColors = &colorData[i * (18 * 4)];
+        GLfloat * pieceColors = &colorData[i * (kCubeCornerVertexCount * 4)];
         ANCubeColor * colors = [piece edgeColors];
         for (int colorIndex = 0; colorIndex < 3; colorIndex++) {
             for (int i = 0; i < 6; i++) {
