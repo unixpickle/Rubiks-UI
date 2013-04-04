@@ -103,7 +103,7 @@
     
     ANCubeAnimation * anim = [[ANCubeAnimation alloc] initWithFace:ANCubeAnimationFaceTop];
     anim.angle = M_PI / 8;
-    //[cube updateWithAnimation:anim];
+    [cube updateWithAnimation:anim];
     [cube drawCube];
 }
 @end

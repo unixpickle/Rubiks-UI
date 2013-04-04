@@ -9,7 +9,7 @@
 #ifndef RubiksCube_ANCubeVertexData_h
 #define RubiksCube_ANCubeVertexData_h
 
-#define kCubeCornerVertexCount 54
+#define kCubeCornerVertexCount 72
 #define kCubeSpace 0.01
 
 const GLfloat PositiveCorner[] = {
@@ -75,7 +75,28 @@ const GLfloat PositiveCorner[] = {
     1, kCubeSpace, 1,
     1, kCubeSpace, 1,
     1, 0, 1,
-    1, 0, 0
+    1, 0, 0,
+    // actual black bottom inner face
+    0, 0, 0,
+    1, 0, 0,
+    1, 0, 1,
+    1, 0, 1,
+    0, 0, 1,
+    0, 0, 0,
+    // black back inner face
+    0, 0, 0,
+    0, 1, 0,
+    1, 1, 0,
+    1, 1, 0,
+    1, 0, 0,
+    0, 0, 0,
+    // black left inner face
+    0, 0, 0,
+    0, 0, 1,
+    0, 1, 1,
+    0, 1, 1,
+    0, 1, 0,
+    0, 0, 0
 };
 
 #endif
