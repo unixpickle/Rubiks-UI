@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
+#import "ANPocketCube.h"
 
-@interface ANViewController : GLKViewController
+@interface ANViewController : GLKViewController {
+    ANPocketCube * cube;
+    EAGLContext * context;
+    GLKBaseEffect * effect;
+}
+
+@property (nonatomic, retain) EAGLContext * context;
+@property (nonatomic, retain) GLKBaseEffect * effect;
 
 @end

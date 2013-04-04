@@ -22,6 +22,10 @@
 		FA6759D4170CE81600314726 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = FA6759D3170CE81600314726 /* Shader.vsh */; };
 		FA6759D7170CE81600314726 /* ANViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6759D6170CE81600314726 /* ANViewController.m */; };
 		FA6759DA170CE81600314726 /* ANViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA6759D8170CE81600314726 /* ANViewController.xib */; };
+		FA6759F3170CEE6300314726 /* ANCube.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6759EE170CEE6300314726 /* ANCube.m */; };
+		FA6759F4170CEE6300314726 /* ANCubePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6759F0170CEE6300314726 /* ANCubePiece.m */; };
+		FA6759F5170CEE6300314726 /* ANPocketCube.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6759F2170CEE6300314726 /* ANPocketCube.m */; };
+		FA675A05170D0DF200314726 /* ANCubeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA675A04170D0DF200314726 /* ANCubeAnimation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +49,15 @@
 		FA6759D5170CE81600314726 /* ANViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANViewController.h; sourceTree = "<group>"; };
 		FA6759D6170CE81600314726 /* ANViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANViewController.m; sourceTree = "<group>"; };
 		FA6759D9170CE81600314726 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ANViewController.xib; sourceTree = "<group>"; };
+		FA6759ED170CEE6300314726 /* ANCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANCube.h; sourceTree = "<group>"; };
+		FA6759EE170CEE6300314726 /* ANCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANCube.m; sourceTree = "<group>"; };
+		FA6759EF170CEE6300314726 /* ANCubePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANCubePiece.h; sourceTree = "<group>"; };
+		FA6759F0170CEE6300314726 /* ANCubePiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANCubePiece.m; sourceTree = "<group>"; };
+		FA6759F1170CEE6300314726 /* ANPocketCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANPocketCube.h; sourceTree = "<group>"; };
+		FA6759F2170CEE6300314726 /* ANPocketCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANPocketCube.m; sourceTree = "<group>"; };
+		FA675A02170D0DE200314726 /* ANCubeVertexData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANCubeVertexData.h; sourceTree = "<group>"; };
+		FA675A03170D0DF200314726 /* ANCubeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANCubeAnimation.h; sourceTree = "<group>"; };
+		FA675A04170D0DF200314726 /* ANCubeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANCubeAnimation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +108,7 @@
 		FA6759BF170CE81600314726 /* RubiksCube */ = {
 			isa = PBXGroup;
 			children = (
+				FA6759EC170CEE6300314726 /* Cube Model */,
 				FA6759C8170CE81600314726 /* ANAppDelegate.h */,
 				FA6759C9170CE81600314726 /* ANAppDelegate.m */,
 				FA6759D1170CE81600314726 /* Shader.fsh */,
@@ -119,6 +133,22 @@
 				FA6759CF170CE81600314726 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA6759EC170CEE6300314726 /* Cube Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA675A02170D0DE200314726 /* ANCubeVertexData.h */,
+				FA675A03170D0DF200314726 /* ANCubeAnimation.h */,
+				FA675A04170D0DF200314726 /* ANCubeAnimation.m */,
+				FA6759EF170CEE6300314726 /* ANCubePiece.h */,
+				FA6759F0170CEE6300314726 /* ANCubePiece.m */,
+				FA6759F1170CEE6300314726 /* ANPocketCube.h */,
+				FA6759F2170CEE6300314726 /* ANPocketCube.m */,
+				FA6759ED170CEE6300314726 /* ANCube.h */,
+				FA6759EE170CEE6300314726 /* ANCube.m */,
+			);
+			path = "Cube Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +223,10 @@
 				FA6759C6170CE81600314726 /* main.m in Sources */,
 				FA6759CA170CE81600314726 /* ANAppDelegate.m in Sources */,
 				FA6759D7170CE81600314726 /* ANViewController.m in Sources */,
+				FA6759F3170CEE6300314726 /* ANCube.m in Sources */,
+				FA6759F4170CEE6300314726 /* ANCubePiece.m in Sources */,
+				FA6759F5170CEE6300314726 /* ANPocketCube.m in Sources */,
+				FA675A05170D0DF200314726 /* ANCubeAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +349,7 @@
 				FA6759DF170CE81600314726 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
