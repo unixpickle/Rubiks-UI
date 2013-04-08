@@ -7,20 +7,11 @@
 //
 
 #import "ANPocketCube.h"
-#import "ANCubeVertexData.h"
-
-@interface ANPocketCube (Private)
-
-- (void)generateGLData:(ANCubeAnimation *)animation;
-- (void)generateDefaultCorner:(int)i;
-- (BOOL)isCornerPiece:(int)index onFace:(ANCubeAnimationFace)face;
-- (void)copyColor:(ANCubeColor)color toBuffer:(GLfloat *)buffer;
-
-@end
 
 @implementation ANPocketCube
 
 @synthesize cornerPieces;
+@synthesize animation;
 
 + (ANPocketCube *)pocketCubeIdentity {
     return [[ANPocketCube alloc] initIdentity];
@@ -53,137 +44,101 @@
 }
 
 - (void)dealloc {
-    if (vertexData) {
-        free(vertexData);
-        free(colorData);
+    if (hasGenerated) {
+        glDeleteBuffers(1, &cornerBuffer);
+        glDeleteVertexArraysOES(1, &cornerVertexArray);
+        free(data);
     }
 }
 
-#pragma mark Drawing
+#pragma mark - Drawing -
 
-- (void)drawCube {
-    if (!vertexData) {
-        [self generateGLData:nil];
+- (void)drawCube:(GLKBaseEffect *)effect {
+    if (!hasGenerated) {
+        [self generateGLData];
     }
-    glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, vertexData);
-    glEnableVertexAttribArray(GLKVertexAttribColor);
-    glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, colorData);
-    glDrawArrays(GL_TRIANGLES, 0, kCubeCornerVertexCount * 8);
-}
-
-- (void)updateWithAnimation:(ANCubeAnimation *)animation {
-    int cornerSize = kCubeCornerVertexCount * 3;
-    if (!vertexData) {
-        [self generateGLData:animation];
-        return;
-    }
+        
+    // first draw regular corners
+    glBindVertexArrayOES(cornerVertexArray);
+    
     for (int i = 0; i < 8; i++) {
-        [self generateDefaultCorner:i];
-        if (![self isCornerPiece:i onFace:animation.face] || !animation) {
-            continue;
+        if (animation) {
+            if (isCornerPieceOnFace(i, animation.face)) continue;
         }
-        for (int j = 0; j < kCubeCornerVertexCount; j++) {
-            GLKVector3 point = GLKVector3Make(vertexData[cornerSize * i + j * 3],
-                                              vertexData[cornerSize * i + j * 3 + 1],
-                                              vertexData[cornerSize * i + j * 3 + 2]);
-            point = [animation rotatePoint:point];
-            vertexData[cornerSize * i + j * 3] = point.x;
-            vertexData[cornerSize * i + j * 3 + 1] = point.y;
-            vertexData[cornerSize * i + j * 3 + 2] = point.z;
-        }
-    }
-}
-
-#pragma mark - Private -
-
-- (void)generateGLData:(ANCubeAnimation *)animation {
-    // generate the vertex data for all 8 unrotated corner pieces
-    int cornerSize = kCubeCornerVertexCount * 3;
-    vertexData = (GLfloat *)malloc(sizeof(GLfloat) * kCubeCornerVertexCount * 3 * 8);
-    GLfloat * corners = vertexData;
-    for (int i = 0; i < 8; i++) {
-        [self generateDefaultCorner:i];
+        glDrawArrays(GL_TRIANGLES, kCubeCornerVertexCount * i, kCubeCornerVertexCount);
     }
     if (animation) {
-        // perform rotations
+        GLKMatrix4 oldModel = effect.transform.modelviewMatrix;
+        GLKVector4 rotation = [animation rotationInformation];
+        effect.transform.modelviewMatrix = GLKMatrix4Rotate(oldModel,
+                                                            rotation.v[0], rotation.v[1],
+                                                            rotation.v[2], rotation.v[3]);
+        [effect prepareToDraw];
         for (int i = 0; i < 8; i++) {
-            if (![self isCornerPiece:i onFace:animation.face]) continue;
-            for (int j = 0; j < kCubeCornerVertexCount; j++) {
-                GLKVector3 point = GLKVector3Make(corners[cornerSize * i + j * 3],
-                                                  corners[cornerSize * i + j * 3 + 1],
-                                                  corners[cornerSize * i + j * 3 + 2]);
-                point = [animation rotatePoint:point];
-                corners[cornerSize * i + j * 3] = point.x;
-                corners[cornerSize * i + j * 3 + 1] = point.y;
-                corners[cornerSize * i + j * 3 + 2] = point.z;
+            if (!isCornerPieceOnFace(i, animation.face)) continue;
+            glDrawArrays(GL_TRIANGLES, kCubeCornerVertexCount * i, kCubeCornerVertexCount);
+        }
+        effect.transform.modelviewMatrix = oldModel;
+        [effect prepareToDraw];
+    }
+}
+
+- (void)updateNewColors {
+    for (int i = 0; i < 8; i++) {
+        ANCubePiece * piece = [[self cornerPieces] objectAtIndex:i];
+        GLfloat * pieceColors = &data[i * kCubeCornerVertexCount * kDataComponentCount];
+        ANCubeColor * colors = [piece edgeColors];
+        // loop through all three colored planes
+        for (int colorIndex = 0; colorIndex < 3; colorIndex++) {
+            GLfloat * planeData = &pieceColors[colorIndex * 6 * kDataComponentCount];
+            // color the vertices individually
+            for (int i = 0; i < 6; i++) {
+                copyColorToBuffer(colors[colorIndex],
+                                  &planeData[i * kDataComponentCount + 3]);
             }
         }
     }
     
-    // create the color data
-    colorData = (GLfloat *)malloc(sizeof(GLfloat) * kCubeCornerVertexCount * 4 * 8);
+    // update the framebuffer
+    glBindVertexArrayOES(cornerVertexArray);
+    glBindBuffer(GL_ARRAY_BUFFER, cornerBuffer);
+    
+    int dataSize = kCubeCornerVertexCount * kDataComponentCount * sizeof(GLfloat) * 8;
+    glBufferData(GL_ARRAY_BUFFER, dataSize, data, GL_STREAM_DRAW);
+    glEnableVertexAttribArray(GLKVertexAttribPosition);
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(GLfloat), 0);
+    glEnableVertexAttribArray(GLKVertexAttribColor);
+    glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT,
+                          GL_FALSE, 7 * sizeof(GLfloat),
+                          (void *)(sizeof(GLfloat) * 3));
+    
+    glBindVertexArrayOES(0);
+
+}
+
+// only to be called if you really know what you're doing (you don't)
+- (void)generateGLData {
+    int cornerComponents = kCubeCornerVertexCount * kDataComponentCount;
+    if (!data) {
+        data = (GLfloat *)malloc(sizeof(GLfloat) * cornerComponents * 8);
+    }
     for (int i = 0; i < 8; i++) {
-        ANCubePiece * piece = [[self cornerPieces] objectAtIndex:i];
-        GLfloat * pieceColors = &colorData[i * (kCubeCornerVertexCount * 4)];
-        ANCubeColor * colors = [piece edgeColors];
-        for (int colorIndex = 0; colorIndex < 3; colorIndex++) {
-            for (int i = 0; i < 6; i++) {
-                [self copyColor:colors[colorIndex] toBuffer:&pieceColors[i * 4 + colorIndex * 6 * 4]];
-            }
-        }
-        // the rest of the piece is all black
-        for (int index = 18; index < kCubeCornerVertexCount; index++) {
-            colorData[i * (kCubeCornerVertexCount * 4) + index * 4] = 0;
-            colorData[i * (kCubeCornerVertexCount * 4) + index * 4 + 1] = 0;
-            colorData[i * (kCubeCornerVertexCount * 4) + index * 4 + 2] = 0;
-            colorData[i * (kCubeCornerVertexCount * 4) + index * 4 + 3] = 1;
-        }
+        [self generateCornerAtIndex:i];
     }
+    
+    if (!hasGenerated) {
+        glGenVertexArraysOES(1, &cornerVertexArray);
+        glBindVertexArrayOES(cornerVertexArray);
+        glGenBuffers(1, &cornerBuffer);
+        hasGenerated = YES;
+    }
+    
+    [self updateNewColors];
 }
 
-- (void)generateDefaultCorner:(int)i {
-    int cornerSize = kCubeCornerVertexCount * 3;
-    memcpy((void *)&vertexData[cornerSize * i], PositiveCorner, sizeof(GLfloat) * cornerSize);
-    int x = (i >> 2) & 1;
-    int y = (i >> 1) & 1;
-    int z = i & 1; // my specification has Z going *towards* the user
-    GLfloat scalar[3] = {x ? 1 : -1, y ? 1 : -1, z ? 1 : -1};
-    for (int j = 0; j < kCubeCornerVertexCount; j++) {
-        vertexData[cornerSize * i + j * 3] *= scalar[0];
-        vertexData[cornerSize * i + j * 3 + 1] *= scalar[1];
-        vertexData[cornerSize * i + j * 3 + 2] *= scalar[2];
-    }
-}
-
-- (BOOL)isCornerPiece:(int)index onFace:(ANCubeAnimationFace)face {
-    int pieces[6][4] = {
-        {0x2, 0x3, 0x6, 0x7}, // top
-        {0x000, 0x1, 0x4, 0x5}, // bottom
-        {0x4, 0x5, 0x6, 0x7}, // right
-        {0x000, 0x1, 0x2, 0x3}, // left
-        {0x1, 0x3, 0x5, 0x7}, // front
-        {0x000, 0x2, 0x4, 0x6} // back
-    };
-    for (int i = 0; i < 4; i++) {
-        if (pieces[face][i] == index) return YES;
-    }
-    return NO;
-}
-
-- (void)copyColor:(ANCubeColor)color toBuffer:(GLfloat *)buffer {
-    struct {
-        GLfloat red, green, blue;
-    } colors[] = {
-        {1, 1, 1}, // white
-        {1, 1, 0}, // yellow
-        {0, 0, 1}, // blue
-        {0, 1, 0}, // green
-        {1, 0, 0}, // red
-        {1, 0.5, 0.2} // orange
-    };
-    memcpy((void *)buffer, &colors[color - 1], sizeof(GLfloat) * 3);
-    buffer[4] = 1;
+- (void)generateCornerAtIndex:(int)index {
+    int offset = kCubeCornerVertexCount * kDataComponentCount * index;
+    generateDefaultCorner(index, &data[offset], NO);
 }
 
 @end

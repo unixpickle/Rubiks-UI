@@ -10,6 +10,14 @@
 
 @interface ANCube : ANPocketCube {
     NSArray * edgePieces;
+    
+    GLfloat * edgeData;
+    
+    GLuint edgeVertexArray;
+    GLuint edgeBuffer;
+    
+    GLuint centerVertexArray;
+    GLuint centerBuffer;
 }
 
 @property (readonly) NSArray * edgePieces;

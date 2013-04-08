@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA24DE59170F8A7F0023A519 /* ANCubeVertexData.m in Sources */ = {isa = PBXBuildFile; fileRef = FA24DE58170F8A7F0023A519 /* ANCubeVertexData.m */; };
 		FA6759B6170CE81500314726 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6759B5170CE81500314726 /* UIKit.framework */; };
 		FA6759B8170CE81600314726 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6759B7170CE81500314726 /* Foundation.framework */; };
 		FA6759BA170CE81600314726 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6759B9170CE81600314726 /* CoreGraphics.framework */; };
@@ -24,9 +25,12 @@
 		FA6759F4170CEE6300314726 /* ANCubePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6759F0170CEE6300314726 /* ANCubePiece.m */; };
 		FA6759F5170CEE6300314726 /* ANPocketCube.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6759F2170CEE6300314726 /* ANPocketCube.m */; };
 		FA675A05170D0DF200314726 /* ANCubeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA675A04170D0DF200314726 /* ANCubeAnimation.m */; };
+		FAD81BDB1711F3D0000F80DA /* ANTouchPlane.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD81BDA1711F3D0000F80DA /* ANTouchPlane.m */; };
+		FAD81BDE1711F545000F80DA /* ANTouchRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD81BDD1711F545000F80DA /* ANTouchRecognizer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA24DE58170F8A7F0023A519 /* ANCubeVertexData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANCubeVertexData.m; sourceTree = "<group>"; };
 		FA6759B2170CE81500314726 /* RubiksCube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RubiksCube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6759B5170CE81500314726 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FA6759B7170CE81500314726 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -54,6 +58,10 @@
 		FA675A02170D0DE200314726 /* ANCubeVertexData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANCubeVertexData.h; sourceTree = "<group>"; };
 		FA675A03170D0DF200314726 /* ANCubeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANCubeAnimation.h; sourceTree = "<group>"; };
 		FA675A04170D0DF200314726 /* ANCubeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANCubeAnimation.m; sourceTree = "<group>"; };
+		FAD81BD91711F3D0000F80DA /* ANTouchPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTouchPlane.h; sourceTree = "<group>"; };
+		FAD81BDA1711F3D0000F80DA /* ANTouchPlane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTouchPlane.m; sourceTree = "<group>"; };
+		FAD81BDC1711F545000F80DA /* ANTouchRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTouchRecognizer.h; sourceTree = "<group>"; };
+		FAD81BDD1711F545000F80DA /* ANTouchRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTouchRecognizer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +140,9 @@
 		FA6759EC170CEE6300314726 /* Cube Model */ = {
 			isa = PBXGroup;
 			children = (
+				FAD81BD81711F38F000F80DA /* Touch Detection */,
 				FA675A02170D0DE200314726 /* ANCubeVertexData.h */,
+				FA24DE58170F8A7F0023A519 /* ANCubeVertexData.m */,
 				FA675A03170D0DF200314726 /* ANCubeAnimation.h */,
 				FA675A04170D0DF200314726 /* ANCubeAnimation.m */,
 				FA6759EF170CEE6300314726 /* ANCubePiece.h */,
@@ -143,6 +153,17 @@
 				FA6759EE170CEE6300314726 /* ANCube.m */,
 			);
 			path = "Cube Model";
+			sourceTree = "<group>";
+		};
+		FAD81BD81711F38F000F80DA /* Touch Detection */ = {
+			isa = PBXGroup;
+			children = (
+				FAD81BD91711F3D0000F80DA /* ANTouchPlane.h */,
+				FAD81BDA1711F3D0000F80DA /* ANTouchPlane.m */,
+				FAD81BDC1711F545000F80DA /* ANTouchRecognizer.h */,
+				FAD81BDD1711F545000F80DA /* ANTouchRecognizer.m */,
+			);
+			path = "Touch Detection";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +240,9 @@
 				FA6759F4170CEE6300314726 /* ANCubePiece.m in Sources */,
 				FA6759F5170CEE6300314726 /* ANPocketCube.m in Sources */,
 				FA675A05170D0DF200314726 /* ANCubeAnimation.m in Sources */,
+				FA24DE59170F8A7F0023A519 /* ANCubeVertexData.m in Sources */,
+				FAD81BDB1711F3D0000F80DA /* ANTouchPlane.m in Sources */,
+				FAD81BDE1711F545000F80DA /* ANTouchRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +330,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RubiksCube/RubiksCube-Prefix.pch";
 				INFOPLIST_FILE = "RubiksCube/RubiksCube-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -318,7 +342,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RubiksCube/RubiksCube-Prefix.pch";
 				INFOPLIST_FILE = "RubiksCube/RubiksCube-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

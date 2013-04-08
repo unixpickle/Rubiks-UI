@@ -32,6 +32,13 @@
     return self;
 }
 
+- (GLKVector4)rotationInformation {
+    double xValue = face == ANCubeAnimationFaceLeft || face == ANCubeAnimationFaceRight ? 1 : 0;
+    double yValue = face == ANCubeAnimationFaceBottom || face == ANCubeAnimationFaceTop ? 1 : 0;
+    double zValue = face == ANCubeAnimationFaceFront || face == ANCubeAnimationFaceBack ? 1 : 0;
+    return GLKVector4Make(angle, xValue, yValue, zValue);
+}
+
 - (GLKVector3)rotatePoint:(GLKVector3)vector {
     return GLKMatrix3MultiplyVector3(rotationMatrix, vector);
 }

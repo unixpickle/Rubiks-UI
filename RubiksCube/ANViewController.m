@@ -22,7 +22,7 @@
     GLKView * glkView = (GLKView *)self.view;
     glkView.drawableMultisample = GLKViewDrawableMultisample4X;
     
-    cube = [[ANPocketCube alloc] initIdentity];
+    cube = [[ANCube alloc] initIdentity];
     [super viewDidLoad];
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
@@ -92,7 +92,7 @@
     
     self.effect.transform.projectionMatrix = projectionMatrix;
     
-    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0, 0, -5.0f);
+    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0, 0, -7.0f);
     modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, M_PI / 4, 1, 1, 0);
     self.effect.transform.modelviewMatrix = modelViewMatrix;
 }
@@ -101,10 +101,16 @@
     glClearColor(0.5, 0.5, 0.5, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    static double angle = 0;
-    angle += M_PI / 32;
+    static NSDate * lastDate = nil;
+    static double angle = M_PI / 4;
     
-    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0, 0, -5.0f);
+    NSDate * now = [NSDate date];
+    if (lastDate) {
+        angle += [now timeIntervalSinceDate:lastDate];
+    }
+    lastDate = now;
+    
+    GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0, 0, -8.0f);
     modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, angle / 4, 1, 1, 0);
     self.effect.transform.modelviewMatrix = modelViewMatrix;
     
@@ -113,7 +119,7 @@
     
     ANCubeAnimation * anim = [[ANCubeAnimation alloc] initWithFace:ANCubeAnimationFaceLeft];
     anim.angle = angle;
-    [cube updateWithAnimation:anim];
-    [cube drawCube];
+    [cube setAnimation:anim];
+    [cube drawCube:self.effect];
 }
 @end

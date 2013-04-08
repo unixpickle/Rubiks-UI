@@ -29,5 +29,6 @@ typedef enum {
 
 - (id)initWithFace:(ANCubeAnimationFace)theFace;
 - (GLKVector3)rotatePoint:(GLKVector3)vector;
+- (GLKVector4)rotationInformation;
 
 @end
