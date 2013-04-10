@@ -25,6 +25,7 @@
 		FA6759F4170CEE6300314726 /* ANCubePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6759F0170CEE6300314726 /* ANCubePiece.m */; };
 		FA6759F5170CEE6300314726 /* ANPocketCube.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6759F2170CEE6300314726 /* ANPocketCube.m */; };
 		FA675A05170D0DF200314726 /* ANCubeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA675A04170D0DF200314726 /* ANCubeAnimation.m */; };
+		FAA2476E1714D52700B4920E /* ANTouchHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA2476D1714D52700B4920E /* ANTouchHandler.m */; };
 		FAD81BDB1711F3D0000F80DA /* ANTouchPlane.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD81BDA1711F3D0000F80DA /* ANTouchPlane.m */; };
 		FAD81BDE1711F545000F80DA /* ANTouchRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD81BDD1711F545000F80DA /* ANTouchRecognizer.m */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,8 @@
 		FA675A02170D0DE200314726 /* ANCubeVertexData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANCubeVertexData.h; sourceTree = "<group>"; };
 		FA675A03170D0DF200314726 /* ANCubeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANCubeAnimation.h; sourceTree = "<group>"; };
 		FA675A04170D0DF200314726 /* ANCubeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANCubeAnimation.m; sourceTree = "<group>"; };
+		FAA2476C1714D52700B4920E /* ANTouchHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTouchHandler.h; sourceTree = "<group>"; };
+		FAA2476D1714D52700B4920E /* ANTouchHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTouchHandler.m; sourceTree = "<group>"; };
 		FAD81BD91711F3D0000F80DA /* ANTouchPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTouchPlane.h; sourceTree = "<group>"; };
 		FAD81BDA1711F3D0000F80DA /* ANTouchPlane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTouchPlane.m; sourceTree = "<group>"; };
 		FAD81BDC1711F545000F80DA /* ANTouchRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTouchRecognizer.h; sourceTree = "<group>"; };
@@ -162,6 +165,8 @@
 				FAD81BDA1711F3D0000F80DA /* ANTouchPlane.m */,
 				FAD81BDC1711F545000F80DA /* ANTouchRecognizer.h */,
 				FAD81BDD1711F545000F80DA /* ANTouchRecognizer.m */,
+				FAA2476C1714D52700B4920E /* ANTouchHandler.h */,
+				FAA2476D1714D52700B4920E /* ANTouchHandler.m */,
 			);
 			path = "Touch Detection";
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 				FA24DE59170F8A7F0023A519 /* ANCubeVertexData.m in Sources */,
 				FAD81BDB1711F3D0000F80DA /* ANTouchPlane.m in Sources */,
 				FAD81BDE1711F545000F80DA /* ANTouchRecognizer.m in Sources */,
+				FAA2476E1714D52700B4920E /* ANTouchHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

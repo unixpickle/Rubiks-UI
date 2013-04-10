@@ -34,8 +34,13 @@
     GLKView *view = (GLKView *)self.view;
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
-    
+
     [self setupGL];
+    
+    recog = [[ANTouchRecognizer alloc] initRubiksCubeRecognizer];
+    [recog generateGLData];
+    touchHandler = [[ANTouchHandler alloc] initWithCube:cube recognizer:recog];
+    
 }
 
 - (void)dealloc
@@ -122,4 +127,15 @@
     [cube setAnimation:anim];
     [cube drawCube:self.effect];
 }
+
+#pragma mark - Touch Recognition -
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    CGPoint p = [[touches anyObject] locationInView:self.view];
+    CGSize size = CGSizeMake(((GLKView *)self.view).drawableWidth,
+                             ((GLKView *)self.view).drawableHeight);
+    [touchHandler toggleColorAtPoint:p viewportSize:size effect:self.effect];
+    [cube updateNewColors];
+}
+
 @end

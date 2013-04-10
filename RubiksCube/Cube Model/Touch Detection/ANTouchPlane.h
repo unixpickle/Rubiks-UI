@@ -9,8 +9,8 @@
 #import <GLKit/GLKit.h>
 
 typedef enum {
-    ANTouchPieceTypeEdge,
-    ANTouchPieceTypeCorner
+    ANTouchPieceTypeEdge = 1,
+    ANTouchPieceTypeCorner = 2
 } ANTouchPieceType;
 
 @interface ANTouchPlane : NSObject {

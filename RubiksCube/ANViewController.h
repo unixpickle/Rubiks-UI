@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 #import "ANCube.h"
+#import "ANTouchHandler.h"
 
 @interface ANViewController : GLKViewController {
     ANPocketCube * cube;
     EAGLContext * context;
     GLKBaseEffect * effect;
+    
+    ANTouchRecognizer * recog;
+    ANTouchHandler * touchHandler;
 }
 
 @property (nonatomic, retain) EAGLContext * context;

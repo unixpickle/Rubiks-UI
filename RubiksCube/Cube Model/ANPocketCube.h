@@ -10,6 +10,7 @@
 #import "ANCubePiece.h"
 #import "ANCubeAnimation.h"
 #import "ANCubeVertexData.h"
+#import "ANTouchRecognizer.h"
 
 @interface ANPocketCube : NSObject {
     NSArray * cornerPieces;
@@ -30,6 +31,7 @@
 - (id)initIdentity;
 
 - (void)drawCube:(GLKBaseEffect *)effect;
+- (void)drawTouchRecognition:(ANTouchRecognizer *)recog effect:(GLKBaseEffect *)effect;
 - (void)updateNewColors;
 
 // only to be called if you really know what you're doing (you don't)

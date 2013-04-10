@@ -122,6 +122,37 @@
     }
 }
 
+- (void)drawTouchRecognition:(ANTouchRecognizer *)recog effect:(GLKBaseEffect *)effect {
+    [super drawTouchRecognition:recog effect:effect];
+
+    glBindVertexArrayOES(recog.edgeVertexArray);
+    glBindBuffer(GL_ARRAY_BUFFER, recog.edgeVertexBuffer);
+    
+    // no need to draw any centers or corners
+    for (int i = 0; i < 12; i++) {
+        if (animation) {
+            if (isEdgePieceOnFace(i, animation.face)) continue;
+        }
+        glDrawArrays(GL_TRIANGLES, kCubeEdgeVertexCount * i, kCubeEdgeVertexCount);
+    }
+    
+    if (animation) {
+        GLKMatrix4 oldModel = effect.transform.modelviewMatrix;
+        GLKVector4 rotation = [animation rotationInformation];
+        effect.transform.modelviewMatrix = GLKMatrix4Rotate(oldModel,
+                                                            rotation.v[0], rotation.v[1],
+                                                            rotation.v[2], rotation.v[3]);
+        [effect prepareToDraw];
+        for (int i = 0; i < 12; i++) {
+            if (!isEdgePieceOnFace(i, animation.face)) continue;
+            glDrawArrays(GL_TRIANGLES, kCubeEdgeVertexCount * i, kCubeEdgeVertexCount);
+        }
+        
+        effect.transform.modelviewMatrix = oldModel;
+        [effect prepareToDraw];
+    }
+}
+
 - (void)updateNewColors {
     // loop through edge pieces
     for (int i = 0; i < 12; i++) {

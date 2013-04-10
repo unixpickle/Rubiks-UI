@@ -8,6 +8,12 @@
 
 #import "ANPocketCube.h"
 
+@interface ANPocketCube (Private)
+
+- (void)drawCorners:(GLKBaseEffect *)effect;
+
+@end
+
 @implementation ANPocketCube
 
 @synthesize cornerPieces;
@@ -60,28 +66,17 @@
         
     // first draw regular corners
     glBindVertexArrayOES(cornerVertexArray);
-    
-    for (int i = 0; i < 8; i++) {
-        if (animation) {
-            if (isCornerPieceOnFace(i, animation.face)) continue;
-        }
-        glDrawArrays(GL_TRIANGLES, kCubeCornerVertexCount * i, kCubeCornerVertexCount);
-    }
-    if (animation) {
-        GLKMatrix4 oldModel = effect.transform.modelviewMatrix;
-        GLKVector4 rotation = [animation rotationInformation];
-        effect.transform.modelviewMatrix = GLKMatrix4Rotate(oldModel,
-                                                            rotation.v[0], rotation.v[1],
-                                                            rotation.v[2], rotation.v[3]);
-        [effect prepareToDraw];
-        for (int i = 0; i < 8; i++) {
-            if (!isCornerPieceOnFace(i, animation.face)) continue;
-            glDrawArrays(GL_TRIANGLES, kCubeCornerVertexCount * i, kCubeCornerVertexCount);
-        }
-        effect.transform.modelviewMatrix = oldModel;
-        [effect prepareToDraw];
-    }
+    [self drawCorners:effect];
 }
+
+- (void)drawTouchRecognition:(ANTouchRecognizer *)recog effect:(GLKBaseEffect *)effect {
+    glBindVertexArrayOES(recog.cornerVertexArray);
+    glBindBuffer(GL_ARRAY_BUFFER, recog.cornerVertexBuffer);
+    
+    [self drawCorners:effect];
+}
+
+#pragma mark Generation
 
 - (void)updateNewColors {
     for (int i = 0; i < 8; i++) {
@@ -139,6 +134,31 @@
 - (void)generateCornerAtIndex:(int)index {
     int offset = kCubeCornerVertexCount * kDataComponentCount * index;
     generateDefaultCorner(index, &data[offset], NO);
+}
+
+#pragma mark - Private -
+
+- (void)drawCorners:(GLKBaseEffect *)effect {
+    for (int i = 0; i < 8; i++) {
+        if (animation) {
+            if (isCornerPieceOnFace(i, animation.face)) continue;
+        }
+        glDrawArrays(GL_TRIANGLES, kCubeCornerVertexCount * i, kCubeCornerVertexCount);
+    }
+    if (animation) {
+        GLKMatrix4 oldModel = effect.transform.modelviewMatrix;
+        GLKVector4 rotation = [animation rotationInformation];
+        effect.transform.modelviewMatrix = GLKMatrix4Rotate(oldModel,
+                                                            rotation.v[0], rotation.v[1],
+                                                            rotation.v[2], rotation.v[3]);
+        [effect prepareToDraw];
+        for (int i = 0; i < 8; i++) {
+            if (!isCornerPieceOnFace(i, animation.face)) continue;
+            glDrawArrays(GL_TRIANGLES, kCubeCornerVertexCount * i, kCubeCornerVertexCount);
+        }
+        effect.transform.modelviewMatrix = oldModel;
+        [effect prepareToDraw];
+    }
 }
 
 @end

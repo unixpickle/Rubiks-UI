@@ -25,9 +25,9 @@
 }
 
 - (GLKVector3)characteristicColor {
-    int red = pieceType * 30 + 30;
-    int green = axis * 30 + 30;
-    int blue = pieceIndex * 10 + 10;
+    int red = pieceType * 70;
+    int green = axis * 70;
+    int blue = pieceIndex * 20;
     return GLKVector3Make(red, green, blue);
 }
 

@@ -15,7 +15,7 @@
     NSArray * touchCorners;
     BOOL isPocketCube;
     
-    GLuint cornerVertexAray;
+    GLuint cornerVertexArray;
     GLuint cornerVertexBuffer;
     
     GLuint edgeVertexArray;
@@ -36,5 +36,6 @@
 
 - (ANTouchPlane *)touchPlaneForCorner:(int)corner axis:(int)axis;
 - (ANTouchPlane *)touchPlaneForEdge:(int)edge axis:(int)axis;
+- (ANTouchPlane *)touchPlaneForColor:(GLKVector3)color;
 
 @end
